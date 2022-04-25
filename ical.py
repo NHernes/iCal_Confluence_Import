@@ -72,23 +72,23 @@ with open ('Anmeldungen_test.csv') as csv_file:
 
 
 
-                test=Datum_HK+ " " + Uhrzeit_HK
-                test = test.replace("Uhr","")
-                test = test[:-1]
+                uhrzeit=Datum_HK+ " " + Uhrzeit_HK
+                uhrzeit = uhrzeit.replace("Uhr","")
+                uhrzeit = uhrzeit[:-1]
 
-                test = datetime.strptime(test, '%d.%m.%Y %H:%M')
+                uhrzeit = datetime.strptime(uhrzeit, '%d.%m.%Y %H:%M')
 
-                test=test.strftime("%Y%m%d %H:%M")
-                test = test.replace("-","")
-                test = test.replace(":","")
-                test = test[:8] + 'T' + test[9:] +"00"
+                uhrzeit=uhrzeit.strftime("%Y%m%d %H:%M")
+                uhrzeit = uhrzeit.replace("-","")
+                uhrzeit = uhrzeit.replace(":","")
+                uhrzeit = uhrzeit[:8] + 'T' + uhrzeit[9:] +"00"
 
 
 
 
                 liste2=["BEGIN:VEVENT",
                 "DTSTAMP:20220411T101111Z",
-                "DTSTART;TZID=Europe/Berlin:"""+test+"",
+                "DTSTART;TZID=Europe/Berlin:"""+uhrzeit+"",
                 "DTEND;TZID=Europe/Berlin:"""+mysum+"",
                 "SUMMARY:"""+Prüfungsname+ """ HK""",
                 "X-CONFLUENCE-CUSTOM-TYPE-ID:ff8ff9e4-9166-464f-96f7-005e76702ec7",
@@ -124,11 +124,11 @@ with open ('Anmeldungen_test.csv') as csv_file:
                     Prüfungsdauer = "120"
                 
                 df = pandas.DataFrame({'duration':[Prüfungsdauer]})
-                test2=(pandas.to_datetime(df.duration, unit='m').dt.strftime('%H:%M'))
+                zeitanpassung=(pandas.to_datetime(df.duration, unit='m').dt.strftime('%H:%M'))
 
 
 
-                list5=test2.values.tolist()
+                list5=zeitanpassung.values.tolist()
                 list6=[Uhrzeit_HK]
                 liste7=list6+list5
 
@@ -153,23 +153,23 @@ with open ('Anmeldungen_test.csv') as csv_file:
 
 
 
-                test=Datum_NK+ " " + Uhrzeit_NK
-                test = test.replace("Uhr","")
-                test = test[:-1]
+                uhrzeit=Datum_NK+ " " + Uhrzeit_NK
+                uhrzeit = uhrzeit.replace("Uhr","")
+                uhrzeit = uhrzeit[:-1]
 
-                test = datetime.strptime(test, '%d.%m.%Y %H:%M')
+                uhrzeit = datetime.strptime(uhrzeit, '%d.%m.%Y %H:%M')
 
-                test=test.strftime("%Y%m%d %H:%M")
-                test = test.replace("-","")
-                test = test.replace(":","")
-                test = test[:8] + 'T' + test[9:] +"00"
+                uhrzeit=uhrzeit.strftime("%Y%m%d %H:%M")
+                uhrzeit = uhrzeit.replace("-","")
+                uhrzeit = uhrzeit.replace(":","")
+                uhrzeit = uhrzeit[:8] + 'T' + uhrzeit[9:] +"00"
 
 
 
 
                 liste15=["BEGIN:VEVENT",
                 "DTSTAMP:20220411T101111Z",
-                "DTSTART;TZID=Europe/Berlin:"""+test+"",
+                "DTSTART;TZID=Europe/Berlin:"""+uhrzeit+"",
                 "DTEND;TZID=Europe/Berlin:"""+mysum+"",
                 "SUMMARY:"""+Prüfungsname+ """ NK""",
                 "X-CONFLUENCE-CUSTOM-TYPE-ID:ff8ff9e4-9166-464f-96f7-005e76702ec7",
